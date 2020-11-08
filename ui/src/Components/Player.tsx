@@ -57,10 +57,11 @@ class Player extends Page<any, any> {
 		if (this.video) {
 			// this.video.setAttribute('x-webkit-airplay','allow');
 			// this.video.setAttribute('airplay','allow');
+			videojs.options.hls.overrideNative = true;
 			this.player = videojs(this.video, {
-        playbackRates: [0.5, 1, 1.5, 2],
+				playbackRates: [0.5, 1, 1.5, 2],
 			});
-      this.player.play();
+			this.player.play();
 		}
 	}
 
@@ -177,12 +178,12 @@ class Player extends Page<any, any> {
 					{this.state.video.name}
 				</Typography>
 				<div>
-          <IconButton component={Link} to={"/play/"+this.state.video.prev} 
-            disabled={this.state.video.prev===""} >
+					<IconButton component={Link} to={"/play/" + this.state.video.prev}
+						disabled={this.state.video.prev === ""} >
 						<SkipPreviousIcon />
 					</IconButton>
-          <IconButton component={Link} to={"/play/"+this.state.video.next} 
-            disabled={this.state.video.next===""} >
+					<IconButton component={Link} to={"/play/" + this.state.video.next}
+						disabled={this.state.video.next === ""} >
 						<SkipNextIcon />
 					</IconButton>
 					<IconButton
